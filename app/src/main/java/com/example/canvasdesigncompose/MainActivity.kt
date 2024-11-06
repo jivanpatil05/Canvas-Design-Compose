@@ -55,14 +55,14 @@ class MainActivity : ComponentActivity() {
                         .verticalScroll(rememberScrollState())
                         .background(Color.Gray)
                 ){
-                    NutritionBar(
+                    HorizontalProgressIndicator(
                         label = "Protein",
                         currentValue = 100,
                         maxValue = 200,
                         barColor = Color.Blue
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    NutritionBar(
+                    HorizontalProgressIndicator(
                         label = "Protein",
                         currentValue = 1500,
                         maxValue = 200,
@@ -70,21 +70,21 @@ class MainActivity : ComponentActivity() {
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Row {
-                        BorderProgressBar(
+                        BorderProgressIndicator(
                             currentValue = 800f,
                             maxValue = 1000f,
                             progressColor = Color.Blue,
                             sheetCollapsed = true
                         )
                         Spacer(modifier = Modifier.width(10.dp))
-                        BorderProgressBar(
+                        BorderProgressIndicator(
                             currentValue = 300f,
                             maxValue = 1000f,
                             progressColor = Color.Red,
                             sheetCollapsed = true
                         )
                         Spacer(modifier = Modifier.width(10.dp))
-                        BorderProgressBar(
+                        BorderProgressIndicator(
                             currentValue = 1000f,
                             maxValue = 1000f,
                             progressColor = Color.Yellow,
@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    CircularProgressBar(
+                    CircularProgressIndicator(
                         currentValue = 40,
                         maxValue = 100
                     )
@@ -103,7 +103,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NutritionBar(label: String, currentValue: Int, maxValue: Int, barColor: Color) {
+fun HorizontalProgressIndicator(label: String, currentValue: Int, maxValue: Int, barColor: Color) {
     val clampedValue = currentValue.coerceAtMost(maxValue)
 
     val progress = clampedValue.toFloat() / maxValue
@@ -130,7 +130,7 @@ fun NutritionBar(label: String, currentValue: Int, maxValue: Int, barColor: Colo
 
 
 @Composable
-fun CircularProgressBar(currentValue: Int, maxValue: Int) {
+fun CircularProgressIndicator(currentValue: Int, maxValue: Int) {
     val clampedValue = currentValue.coerceAtMost(maxValue)
 
     val progress = clampedValue.toFloat() / maxValue
@@ -170,7 +170,7 @@ fun CircularProgressBar(currentValue: Int, maxValue: Int) {
 }
 
 @Composable
-private fun BorderProgressBar(
+private fun BorderProgressIndicator(
     currentValue: Float,
     maxValue: Float,
     progressColor: Color = Color.Cyan,
